@@ -8,7 +8,7 @@ import Image from "next/image";
 export default function Home() {
   return (
     <main className="px-[5vw] min-h-screen w-screen">
-      <div className="h-screen py-10 w-full flex justify-between items-end">
+      <div className="h-[100svh] py-10 w-full flex justify-between items-end">
         <h1 className="lg:text-[5vw] relative z-10 sm:text-[8vw] text-3xl font-medium leading-tight">My name is Joris.<br />I craft dreams.</h1>
         <Button className="relative z-10 cursor-pointer" variant='link' size='icon' asChild>
           <ChevronDown className="animate-bounce" size={30} />
