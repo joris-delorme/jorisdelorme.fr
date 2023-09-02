@@ -2,7 +2,7 @@ import { SpectreDOM } from "@/components/dom/Spectre";
 import { Newsletter } from "@/components/newsletter";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
-import { fineTuningBanner } from "@/lib/constant";
+import { OxpiumAgencyBanner, fineTuningBanner } from "@/lib/constant";
 import { ChevronDown, Github, Instagram, Linkedin, Twitter } from 'lucide-react'
 import Image from "next/image";
 
@@ -32,14 +32,21 @@ export default function Home() {
       </div>
       <div>
         <Separator className="mb-10" />
-        <h2 className="font-bold sm:text-3xl text-xl mb-5">Last Works</h2>
-        <div className="flex pb-20">
-          <a aria-label="Fine Tuning Project" href="https://ft.jorisdelorme.fr" target="_blank" rel="noopener noreferrer">
+        <h2 className="font-bold sm:text-3xl text-xl mb-5">Dernier Projets</h2>
+        <div className="flex pb-20 gap-10 md:flex-row flex-col items-center">
+          <a className="md:w-fit w-full" aria-label="Fine Tuning Project" href="https://ft.jorisdelorme.fr" target="_blank" rel="noopener noreferrer">
             <div className="border rounded-lg overflow-hidden">
-              <Image src={fineTuningBanner} alt="Fine Tuning project" width={378} height={378} />
+              <Image className="aspect-square w-full" src={fineTuningBanner} alt="Fine Tuning project" width={378} height={378} />
             </div>
             <h3 className="text-xl font-bold mt-2">Fine-tuning OpenAI Model</h3>
-            <p className="text-muted-foreground">31 August 2023</p>
+            <p className="text-muted-foreground">31 Août 2023</p>
+          </a>
+          <a className="md:w-fit w-full" aria-label="Oxpium Agency Project" href="https://oxpium.fr" target="_blank" rel="noopener noreferrer">
+            <div className="border rounded-lg overflow-hidden">
+              <Image className="aspect-square w-full" src={OxpiumAgencyBanner} alt="Fine Tuning project" width={378} height={378} />
+            </div>
+            <h3 className="text-xl font-bold mt-2">Oxpium Agency</h3>
+            <p className="text-muted-foreground">12 Mars 2023</p>
           </a>
         </div>
       </div>
