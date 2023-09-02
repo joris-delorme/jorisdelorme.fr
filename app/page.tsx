@@ -1,4 +1,5 @@
 import { SpectreDOM } from "@/components/dom/Spectre";
+import { Newsletter } from "@/components/newsletter";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import { fineTuningBanner } from "@/lib/constant";
@@ -7,9 +8,9 @@ import Image from "next/image";
 
 export default function Home() {
   return (
-    <main className="px-[5vw] min-h-screen w-screen">
-      <div className="h-[100svh] py-10 w-full flex justify-between items-end">
-        <h1 className="lg:text-[5vw] relative z-10 sm:text-[8vw] text-3xl font-medium leading-tight">My name is Joris.<br />I craft dreams.</h1>
+    <main className="px-[5vw] min-h-screen w-screen relative overflow-x-hidden pb-10">
+      <div className="h-[100svh] py-10 w-full flex justify-between gap-4 items-end">
+          <h1 className="lg:text-[5vw] relative z-10 sm:text-[8vw] text-3xl font-medium leading-tight">My name is Joris.<br />I craft dreams.</h1>
         <Button className="relative z-10 cursor-pointer" variant='link' size='icon' asChild>
           <ChevronDown className="animate-bounce" size={30} />
         </Button>
@@ -41,7 +42,25 @@ export default function Home() {
             <p className="text-muted-foreground">31 August 2023</p>
           </a>
         </div>
-      </div> 
+      </div>
+      <Separator className="mb-10" />
+      <div className="flex justify-between items-end">
+        <Newsletter />
+        <nav className="lg:flex gap-3 hidden">
+          <Button size='icon' variant='outline' asChild>
+            <a aria-label="Instagram" href="https://www.instagram.com/joris.delorme/" target="_blank" rel="noopener noreferrer"><Instagram size={18} /></a>
+          </Button>
+          <Button size='icon' variant='outline' asChild>
+            <a aria-label="Linkedin" href="https://www.linkedin.com/in/joris-delorme-b757a5229/" target="_blank" rel="noopener noreferrer"><Linkedin size={18} /></a>
+          </Button>
+          <Button size='icon' variant='outline' asChild>
+            <a aria-label="Twitter" href="https://twitter.com/joris_delorme_" target="_blank" rel="noopener noreferrer"><Twitter size={18} /></a>
+          </Button>
+          <Button size='icon' variant='outline' asChild>
+            <a aria-label="Github" href="https://github.com/joris-delorme" target="_blank" rel="noopener noreferrer"><Github size={18} /></a>
+          </Button>
+        </nav>
+      </div>
     </main>
   )
 }

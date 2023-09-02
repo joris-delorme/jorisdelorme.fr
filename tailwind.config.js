@@ -70,6 +70,9 @@ module.exports = {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
       },
+      transitionTimingFunction: {
+        'run': 'cubic-bezier(.36,-0.56,.34,1)'
+      }
     },
   },
   plugins: [require("tailwindcss-animate")],
