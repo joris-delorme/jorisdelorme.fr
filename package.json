@@ -34,6 +34,7 @@
     "raw-loader": "^4.0.2",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "sentiment": "^5.0.2",
     "tailwind-merge": "^1.14.0",
     "tailwindcss": "3.3.3",
     "tailwindcss-animate": "^1.0.7",
@@ -41,6 +42,7 @@
     "typescript": "5.2.2"
   },
   "devDependencies": {
-    "@types/canvas-confetti": "^1.6.0"
+    "@types/canvas-confetti": "^1.6.0",
+    "@types/sentiment": "^5.0.1"
   }
 }

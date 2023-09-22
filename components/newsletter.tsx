@@ -4,7 +4,7 @@ import { useLayoutEffect, useRef, useState } from "react"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Input } from "./ui/input"
 import { Button } from "./ui/button"
-import { ArrowRight, Loader2, X } from "lucide-react"
+import { ArrowRight, Loader2 } from "lucide-react"
 import { cn } from "@/lib/utils"
 import confetti from "canvas-confetti";
 import axios from 'axios'

@@ -37,7 +37,6 @@ exports.newsletter = functions.https.onRequest((req, res) => {
           "Action": "addnoforce",
           "Email": req.body.email
         })
-      //    throw new Error("Une erreur c'est produite")
       res.status(200).send('Success')
       return
     } catch (err) {
