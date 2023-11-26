@@ -46,8 +46,16 @@ async function getCalendar(): Promise<ICalendarEvent[]> {
         // Post request for login
         response = await client.post(loginUrl, payload, { headers: headers });
 
+        const currentDate = new Date();
+        // Add 30 days
+        currentDate.setDate(currentDate.getDate() + 30);
+        // Format the date to YYYY-MM-DD
+        const endDate = `${currentDate.getFullYear()}-${String(currentDate.getMonth() + 1).padStart(2, '0')}-${String(currentDate.getDate()).padStart(2, '0')}`;
+
         // Get calendar data from fixed date to 30 days after today
-        const calendarUrl = `https://app.edsquare.fr/apps/planning/json?start=2023-11-27T00:00:00+01:00&end=${(new Date()).getFullYear()}-${(new Date()).getMonth()}-${(new Date()).setDate((new Date).getDate()+30)}T00:00:00+01:00`;
+        const calendarUrl = `https://app.edsquare.fr/apps/planning/json?start=2023-11-27T00:00:00+01:00&end=${endDate}T00:00:00+01:00`;
+        console.log(calendarUrl)
+        
         response = await client.get(calendarUrl, {
             headers: {
                 'User-Agent': headers['User-Agent'],
@@ -70,6 +78,8 @@ export async function GET() {
     
 
     if (!data) return ""
+
+    console.log(data.length)
 
     data.forEach(event => {
 
