@@ -45,7 +45,6 @@ async function getCalendar(): Promise<ICalendarEvent[]> {
 
         // Post request for login
         response = await client.post(loginUrl, payload, { headers: headers });
-        console.log(response.status)
 
         // Get calendar data
         const calendarUrl = "https://app.edsquare.fr/apps/planning/json?start=2023-11-27T00:00:00+01:00&end=2023-12-03T00:00:00+01:00";
@@ -55,8 +54,6 @@ async function getCalendar(): Promise<ICalendarEvent[]> {
                 'Content-Type': "application/json"
             }
         });
-
-        console.log(response.data)
         
         return response.data
     } catch (error) {
@@ -71,6 +68,9 @@ export async function GET() {
 
     const calendar = ical({ name: 'Epitech' });
     
+
+    if (!data) return ""
+
     data.forEach(event => {
         calendar.createEvent({
             start: new Date(event.start),
