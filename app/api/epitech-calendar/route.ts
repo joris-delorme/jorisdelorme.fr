@@ -46,8 +46,8 @@ async function getCalendar(): Promise<ICalendarEvent[]> {
         // Post request for login
         response = await client.post(loginUrl, payload, { headers: headers });
 
-        // Get calendar data
-        const calendarUrl = "https://app.edsquare.fr/apps/planning/json?start=2023-11-27T00:00:00+01:00&end=2023-12-03T00:00:00+01:00";
+        // Get calendar data from fixed date to 30 days after today
+        const calendarUrl = `https://app.edsquare.fr/apps/planning/json?start=2023-11-27T00:00:00+01:00&end=${(new Date()).getFullYear()}-${(new Date()).getMonth()}-${(new Date()).setDate((new Date).getDate()+30)}T00:00:00+01:00`;
         response = await client.get(calendarUrl, {
             headers: {
                 'User-Agent': headers['User-Agent'],
@@ -72,13 +72,17 @@ export async function GET() {
     if (!data) return ""
 
     data.forEach(event => {
-        calendar.createEvent({
-            start: new Date(event.start),
-            end: new Date(event.end),
-            summary: event.title,
-            description: `Teacher: ${event.teacher}\nRoom: ${event.room}\nLevel: ${event.target}`,
-            location: event.room
-        })
+
+        if (!event.title.includes('Vacances')) {
+            calendar.createEvent({
+                start: new Date(event.start),
+                end: new Date(event.end),
+                summary: event.title,
+                description: `Teacher: ${event.teacher}\nRoom: ${event.room}\nLevel: ${event.target}`,
+                location: event.room
+            })
+        }
+
     })
     
 
