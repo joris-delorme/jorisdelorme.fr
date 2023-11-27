@@ -85,8 +85,8 @@ export async function GET() {
 
         if (!event.title.includes('Vacances')) {
             calendar.createEvent({
-                start: new Date(event.start),
-                end: new Date(event.end),
+                start: event.start,
+                end: event.end,
                 summary: event.title,
                 description: `Teacher: ${event.teacher}\nRoom: ${event.room}\nLevel: ${event.target}`,
                 location: event.room
