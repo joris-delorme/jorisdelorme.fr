@@ -4,6 +4,7 @@ import { load } from "cheerio"
 import axios from "axios";
 import { CookieJar } from 'tough-cookie';
 import { wrapper } from 'axios-cookiejar-support';
+import { tz } from "moment-timezone"
 
 interface ICalendarEvent {
     className: string
@@ -76,23 +77,18 @@ export async function GET() {
 
     const calendar = ical({ name: 'Epitech' });
     
-
     if (!data) return ""
 
-    console.log(data.length)
-
     data.forEach(event => {
-
         if (!event.title.includes('Vacances')) {
             calendar.createEvent({
-                start: event.start,
-                end: event.end,
+                start: tz(event.start, 'Europe/Paris').toDate(),
+                end: tz(event.end, 'Europe/Paris').toDate(),
                 summary: event.title,
                 description: `Teacher: ${event.teacher}\nRoom: ${event.room}\nLevel: ${event.target}`,
                 location: event.room
             })
         }
-
     })
     
 

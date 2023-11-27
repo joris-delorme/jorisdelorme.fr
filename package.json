@@ -35,6 +35,7 @@
     "glslify-loader": "^2.0.0",
     "ical-generator": "^6.0.0",
     "lucide-react": "^0.272.0",
+    "moment-timezone": "^0.5.43",
     "next": "13.4.19",
     "postcss": "8.4.29",
     "qs": "^6.11.2",
