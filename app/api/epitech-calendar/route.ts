@@ -77,7 +77,7 @@ export async function GET() {
 
     const calendar = ical({ name: 'Epitech' });
     
-    if (!data) return new Response("No data found.")
+    if (data.length === 0) return new Response("No data found.")
 
     data.forEach(event => {
         if (!event.title.includes('Vacances')) {
