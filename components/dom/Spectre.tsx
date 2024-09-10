@@ -1,28 +1,32 @@
-'use client'
-import dynamic from 'next/dynamic'
-import { Suspense, useLayoutEffect } from 'react'
+"use client"
 
-const Spectre = dynamic(() => import('@/components/canvas/Spectre').then((mod) => mod.Spectre), { ssr: false })
-const View = dynamic(() => import('@/components/canvas/View').then((mod) => mod.View), {
-  ssr: false
-})
+import { cn } from "@/lib/utils";
+import dynamic from "next/dynamic";
+import { useRef } from "react";
 
-export function SpectreDOM() {
+const Scene = dynamic(() => import('@/components/canvas/Scene'), { ssr: false })
 
-  useLayoutEffect(() => {
-    const icon = document.querySelector("link[rel='icon']") as HTMLLinkElement    
-    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => icon.href = e.matches ? "/favicon.ico" : "/dark/favicon.ico")
-    icon.href = (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) ? "/favicon.ico" : "/dark/favicon.ico"
-  }, [])
+export function SpectreDOM({ className }: { className?: string }) {
+    const ref = useRef<HTMLDivElement>(null)
 
-  return (
-    <>
-      {/*@ts-ignore*/}
-      <View className='absolute h-screen top-0 left-0 w-full'>
-        <Suspense fallback={null}>
-          <Spectre />
-        </Suspense>
-      </View>
-    </>
-  )
+    return (
+        <div
+            ref={ref}
+            className={cn("relative", className)}
+        >
+            <Scene
+                style={{
+                    position: 'absolute',
+                    top: 0,
+                    left: 0,
+                    width: '100%',
+                    height: '100%',
+                    pointerEvents: 'none',
+                    zIndex: -10
+                }}
+                eventSource={ref}
+                eventPrefix='client'
+            />
+        </div>
+    )
 }

@@ -40,7 +40,7 @@ export function Spectre({ ...props }) {
   useFrame((state, dt) => {
     if (ref.current) {
       (ref.current.material as THREE.ShaderMaterial).uniforms.uTime.value += dt
-      ref.current.position.z = THREE.MathUtils.lerp(ref.current.position.z, (state.size.width > 768 ? 0 : -5), 0.025)
+      ref.current.position.z = THREE.MathUtils.lerp(ref.current.position.z, (state.size.width > 768 ? -8 : -15), 0.025)
       ref.current.rotation.y = THREE.MathUtils.lerp(ref.current.rotation.y, -state.mouse.x, 0.05)
       ref.current.rotation.x = THREE.MathUtils.lerp(ref.current.rotation.x, state.mouse.y, 0.05)
     }
@@ -50,7 +50,7 @@ export function Spectre({ ...props }) {
     <group {...props} dispose={null}>
       <mesh
         ref={ref}
-        position={[0, 0, 50]}
+        position={[0, 0, 10]}
         scale={1}
         geometry={geom}
         material={mat}
