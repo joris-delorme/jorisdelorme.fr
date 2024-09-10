@@ -1,5 +1,4 @@
 import { SpectreDOM } from "@/components/dom/Spectre";
-import { Newsletter } from "@/components/newsletter";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import { OxpiumAgencyBanner, fineTuningBanner } from "@/lib/constant";
@@ -52,7 +51,7 @@ export default function Home() {
       </div>
       <Separator className="mb-10" />
       <div className="flex justify-between items-end">
-        <Newsletter />
+        <div className=""></div>
         <nav className="lg:flex gap-3 hidden">
           <Button size='icon' variant='outline' asChild>
             <a aria-label="Instagram" href="https://www.instagram.com/joris.delorme/" target="_blank" rel="noopener noreferrer"><Instagram size={18} /></a>
